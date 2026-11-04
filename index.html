@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>拾页 · 慢读与慢写</title>
+<meta name="description" content="拾页是一个安静的写作与阅读角落：把长一点的想法写下来，把好句子留下来。">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-nav="home">
+
+<div id="topbar"></div>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <div class="eyebrow">Read slowly · Write clearly</div>
+      <h1>把想法<em>留下来</em>，<br>而不是划过。</h1>
+      <p class="lede">拾页是一个可以慢慢写字的地方。没有推荐算法，没有三十秒读完的摘要，只有作者认真写完的一页。</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="write.html">开始写一篇</a>
+        <a class="btn" href="#feed">先读几篇</a>
+      </div>
+    </div>
+    <aside class="quote-card">
+      <blockquote>写作不是把一个想法讲清楚，而是靠写，把那个想法逼出来。</blockquote>
+      <div class="q-meta">编辑手记 · 第 01 期</div>
+    </aside>
+  </section>
+
+  <section class="wrap">
+    <div id="feature-slot">
+      <div class="skeleton" style="border:none">
+        <div class="sk-line w60"></div>
+        <div class="sk-line w90"></div>
+        <div class="sk-line" style="width:40%"></div>
+      </div>
+    </div>
+
+    <div class="toolbar" id="feed">
+      <h2 class="section-title">最新文章 <span class="count" id="post-count"></span></h2>
+      <div class="filters" id="tag-filters"></div>
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <input id="search-input" type="search" placeholder="搜索标题或标签" autocomplete="off">
+      </div>
+    </div>
+
+    <div class="post-list" id="post-list"></div>
+  </section>
+</main>
+
+<div id="footer"></div>
+<div id="toast-root"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tencent-ai/workbuddy-cloud-sdk@dev/lib/index.global.js"></script>
+<script src="assets/cloud.js"></script>
+<script src="assets/home.js"></script>
+</body>
+</html>

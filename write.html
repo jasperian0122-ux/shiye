@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>写作 · 拾页</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-nav="write">
+
+<div id="topbar"></div>
+
+<main>
+  <div class="wrap">
+    <div class="editor-bar">
+      <div class="status" id="status">新建文章 · 尚未保存</div>
+      <button class="btn btn-sm" id="btn-draft">存为草稿</button>
+      <button class="btn btn-sm btn-primary" id="btn-publish">发布</button>
+      <button class="btn btn-sm btn-ghost" id="btn-delete" hidden>删除</button>
+    </div>
+
+    <div class="editor-grid">
+      <div class="editor-col">
+        <input class="title-input" id="f-title" type="text" placeholder="标题" maxlength="120" autocomplete="off">
+        <input class="subtitle-input" id="f-subtitle" type="text" placeholder="副标题（可选）" maxlength="160" autocomplete="off" style="margin-bottom:26px">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:22px">
+          <div class="field" style="margin:0">
+            <label>标签</label>
+            <input id="f-tags" type="text" placeholder="阅读, 方法（逗号分隔）" autocomplete="off">
+          </div>
+          <div class="field" style="margin:0">
+            <label>封面图链接</label>
+            <input id="f-cover" type="url" placeholder="https://…（可选）" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>正文 · 支持 Markdown</label>
+          <textarea class="body-input" id="f-body" placeholder="从一个具体的场景开始写，比从观点开始更容易写下去。"></textarea>
+        </div>
+      </div>
+
+      <div class="editor-col right">
+        <div class="preview-pane">
+          <div class="preview-label"><span>实时预览</span><span id="word-count">0 字</span></div>
+          <div class="prose" id="preview"><div style="color:var(--muted)">在左边写点什么，这里会同步显示排版效果。</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="footer"></div>
+<div id="toast-root"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tencent-ai/workbuddy-cloud-sdk@dev/lib/index.global.js"></script>
+<script src="assets/cloud.js"></script>
+<script src="assets/write.js"></script>
+</body>
+</html>

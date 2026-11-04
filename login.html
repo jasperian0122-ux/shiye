@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录 · 拾页</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-nav="login">
+
+<main class="auth-wrap">
+  <div class="auth-card">
+    <a class="a-brand" href="index.html" style="display:block">拾页</a>
+    <p class="a-sub">登录后即可写文章、点赞与收藏。<br>首次登录会自动创建账号，不需要设密码。</p>
+
+    <div class="seg" id="mode-switch">
+      <button type="button" data-mode="phone" class="active">手机号</button>
+      <button type="button" data-mode="email">邮箱</button>
+    </div>
+
+    <form id="auth-form" novalidate>
+      <div class="field" id="row-phone">
+        <label for="f-phone">手机号</label>
+        <input id="f-phone" type="tel" inputmode="numeric" maxlength="11" placeholder="11 位手机号" autocomplete="tel">
+        <div id="phone-error" style="display:none;color:var(--accent);font-size:12.5px;margin-top:6px"></div>
+      </div>
+
+      <div class="field" id="row-email" hidden>
+        <label for="f-email">邮箱</label>
+        <input id="f-email" type="email" placeholder="you@example.com" autocomplete="email">
+      </div>
+
+      <div class="otp-row">
+        <div class="field">
+          <label for="f-code">验证码</label>
+          <input id="f-code" type="text" inputmode="numeric" maxlength="6" placeholder="收到的 6 位数字" autocomplete="one-time-code">
+        </div>
+        <button class="otp-btn" type="button" id="btn-send">获取验证码</button>
+      </div>
+
+      <button class="btn btn-accent btn-block" type="submit" id="btn-submit" style="margin-top:26px">登录 / 注册</button>
+      <div class="form-error" id="form-error"></div>
+    </form>
+
+    <div class="divider">或</div>
+
+    <button class="wechat-btn" type="button" id="btn-wechat">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M9.2 3C5.2 3 2 5.7 2 9c0 1.9 1 3.5 2.7 4.7l-.7 2 2.4-1.2c.9.3 1.8.4 2.8.4h.6a5.6 5.6 0 0 1-.2-1.5c0-3.3 3.2-6 7.2-6 .3 0 .6 0 .9.1C17 4.3 13.6 3 9.2 3Zm-2.5 3.4a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Zm5 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"/><path d="M22 13.4c0-2.7-2.6-4.9-5.8-4.9s-5.8 2.2-5.8 4.9 2.6 4.9 5.8 4.9c.7 0 1.4-.1 2-.3l2 1-.5-1.7c1.4-.9 2.3-2.3 2.3-3.9Zm-7.7-1.2a.8.8 0 1 1 0-1.5.8.8 0 0 1 0 1.5Zm3.9 0a.8.8 0 1 1 0-1.5.8.8 0 0 1 0 1.5Z"/></svg>
+      微信登录
+    </button>
+
+    <p class="auth-foot">本站内容由作者本人发布并负责。<br>登录即表示同意这一点。</p>
+  </div>
+</main>
+
+<div id="toast-root"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tencent-ai/workbuddy-cloud-sdk@dev/lib/index.global.js"></script>
+<script src="assets/cloud.js"></script>
+<script src="assets/login.js"></script>
+</body>
+</html>
