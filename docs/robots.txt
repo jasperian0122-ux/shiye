@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jasperian0122-ux.github.io/shiye/sitemap.xml
