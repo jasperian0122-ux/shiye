@@ -5,77 +5,217 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="google-site-verification" content="hDX_gG7kW3K1xXNIcfmyHeT85FslEW52143Tp7OfeWU" />
 <title>拾页 · 一个可以慢慢写字的地方</title>
-<meta name="description" content="拾页是一个慢读慢写的博客站。没有推荐算法，没有三十秒读完的摘要，只有作者认真写完的一页。这里收录已发布文章的目录与入口。" />
+<meta name="description" content="拾页是一个慢读慢写的博客站。没有推荐算法，没有三十秒读完的摘要，只有作者认真写完的一页。这里收录已发布文章的目录、编辑原则与慢读方法。" />
 <link rel="canonical" href="https://jasperian0122-ux.github.io/shiye/" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="拾页 · 一个可以慢慢写字的地方" />
 <meta property="og:description" content="慢读慢写的博客站。没有推荐算法，没有三十秒读完的摘要，只有认真写完的一页。" />
+<meta name="theme-color" content="#fbf9f4" />
 <style>
   :root {
     --paper: #fbf9f4; --paper-2: #f4efe6; --paper-3: #efe9dd;
     --ink: #1a1917; --ink-2: #423d35; --muted: #857b6c;
-    --line: #e3dbcc; --accent: #a9482c; --accent-soft: #f1e2da;
+    --line: #e3dbcc; --line-strong: #d3c8b5;
+    --accent: #a9482c; --accent-soft: #f1e2da; --green: #2f5449;
     --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "Times New Roman", Georgia, serif;
     --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
   }
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     margin: 0; background: var(--paper); color: var(--ink);
-    font-family: var(--sans); font-size: 16px; line-height: 1.75;
+    font-family: var(--sans); font-size: 16px; line-height: 1.78;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 28px 96px; }
+  body::after {
+    content: ""; position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 9;
+    background: linear-gradient(90deg, var(--accent) 0 33%, var(--green) 33% 66%, var(--line-strong) 66% 100%);
+    opacity: .85;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 800px; margin: 0 auto; padding: 0 30px 100px; }
+
+  /* ---------- 顶栏 ---------- */
   header.top {
-    display: flex; align-items: baseline; gap: 14px;
-    padding: 34px 0 0; border-bottom: 1px solid var(--line); padding-bottom: 18px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 32px 0 20px; border-bottom: 1px solid var(--line); flex-wrap: wrap;
   }
-  .brand { font-family: var(--serif); font-size: 22px; letter-spacing: .18em; text-decoration: none; color: var(--ink); }
-  .brand span { font-size: 11px; letter-spacing: .3em; color: var(--muted); margin-left: 8px; }
-  .hero { padding: 66px 0 44px; border-bottom: 1px solid var(--line); }
+  .brand { font-family: var(--serif); font-size: 22px; letter-spacing: .2em; text-decoration: none; }
+  .brand span { font-size: 10px; letter-spacing: .34em; color: var(--muted); margin-left: 10px; }
+  nav.top-links { display: flex; gap: 20px; font-size: 12px; letter-spacing: .12em; color: var(--muted); }
+  nav.top-links a { text-decoration: none; padding-bottom: 2px; border-bottom: 1px solid transparent; transition: .18s; }
+  nav.top-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ---------- 首屏 ---------- */
+  .hero { padding: 72px 0 52px; }
   .kicker {
-    font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 22px;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 26px;
   }
+  .kicker::before { content: ""; width: 34px; height: 1px; background: var(--accent); display: block; }
   h1 {
     font-family: var(--serif); font-weight: 600;
-    font-size: clamp(30px, 5vw, 46px); line-height: 1.32;
-    letter-spacing: -.01em; margin: 0 0 22px;
+    font-size: clamp(32px, 5.4vw, 52px); line-height: 1.28;
+    letter-spacing: -.015em; margin: 0 0 26px;
   }
-  h1 em { font-style: normal; color: var(--accent); }
-  .lede { font-size: 17px; color: var(--ink-2); margin: 0 0 32px; max-width: 34em; }
+  h1 em { font-style: normal; color: var(--accent); position: relative; }
+  h1 em::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 6px;
+    background: var(--accent-soft); z-index: -1;
+  }
+  .lede {
+    font-family: var(--serif); font-size: 19px; line-height: 1.9; color: var(--ink-2);
+    margin: 0 0 14px; max-width: 32em;
+  }
+  .lede-2 { font-size: 15px; color: var(--muted); margin: 0 0 34px; }
   .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
   .btn {
-    display: inline-block; padding: 12px 26px; border: 1px solid var(--ink);
+    display: inline-block; padding: 13px 28px; border: 1px solid var(--ink);
     background: var(--ink); color: var(--paper); text-decoration: none;
-    font-size: 14px; letter-spacing: .06em; transition: .18s ease;
+    font-size: 14px; letter-spacing: .08em; transition: .18s ease;
   }
-  .btn:hover { background: var(--accent); border-color: var(--accent); }
+  .btn:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
   .btn.ghost { background: transparent; color: var(--ink); }
   .btn.ghost:hover { background: var(--paper-3); color: var(--ink); border-color: var(--ink); }
-  .note { font-size: 13px; color: var(--muted); }
-  h2.sec {
-    font-family: var(--serif); font-size: 15px; font-weight: 600;
-    letter-spacing: .2em; color: var(--muted); margin: 54px 0 26px;
+
+  /* ---------- 数据条 ---------- */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--line); border-block: 1px solid var(--line); margin: 0 0 8px;
   }
+  .stat { background: var(--paper); padding: 22px 16px; text-align: center; }
+  .stat b {
+    display: block; font-family: var(--serif); font-size: 26px; font-weight: 600;
+    color: var(--ink); line-height: 1.2;
+  }
+  .stat span { display: block; font-size: 11px; letter-spacing: .14em; color: var(--muted); margin-top: 6px; }
+
+  /* ---------- 通用分节 ---------- */
+  section { padding: 52px 0 0; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  h2 {
+    font-family: var(--serif); font-size: 13px; font-weight: 600;
+    letter-spacing: .24em; color: var(--muted); margin: 0; text-transform: uppercase;
+  }
+  .sec-head .num { font-family: var(--mono); font-size: 11px; color: var(--line-strong); }
+  .sec-head .aside { margin-left: auto; font-size: 12px; color: var(--muted); }
+  p { margin: 0 0 18px; }
+  .body-text p { font-size: 16px; color: var(--ink-2); }
+  .body-text p:last-child { margin-bottom: 0; }
+
+  /* ---------- 三点原则 ---------- */
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .principle { border-top: 2px solid var(--ink); padding-top: 16px; }
+  .principle h3 { font-family: var(--serif); font-size: 17px; margin: 0 0 10px; font-weight: 600; }
+  .principle p { font-size: 14px; color: var(--ink-2); margin: 0; line-height: 1.8; }
+
+  /* ---------- 栏目 ---------- */
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .col {
+    background: var(--paper-2); border: 1px solid var(--line); padding: 24px 22px 20px;
+    transition: .2s ease;
+  }
+  .col:hover { background: var(--paper-3); transform: translateY(-2px); }
+  .col .tag { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; color: var(--accent); }
+  .col h3 { font-family: var(--serif); font-size: 19px; margin: 10px 0 10px; font-weight: 600; }
+  .col p { font-size: 13.5px; color: var(--ink-2); margin: 0; line-height: 1.8; }
+
+  /* ---------- 文章列表 ---------- */
   .item {
     display: block; text-decoration: none; color: inherit;
-    padding: 26px 0; border-bottom: 1px solid var(--line);
+    padding: 28px 0; border-bottom: 1px solid var(--line);
+    transition: .18s ease;
   }
   .item:first-of-type { border-top: 1px solid var(--line); }
+  .item:hover { padding-left: 6px; }
+  .item .row { display: flex; align-items: baseline; gap: 14px; }
+  .item .idx { font-family: var(--mono); font-size: 11px; color: var(--line-strong); }
   .item h3 {
     font-family: var(--serif); font-size: 22px; font-weight: 600;
-    margin: 0 0 8px; line-height: 1.4; transition: color .18s ease;
+    margin: 0 0 8px; line-height: 1.42; transition: color .18s ease;
   }
   .item:hover h3 { color: var(--accent); }
-  .item p { margin: 0 0 12px; color: var(--ink-2); font-size: 15px; }
+  .item p { margin: 0 0 12px; color: var(--ink-2); font-size: 15px; line-height: 1.8; }
   .meta { font-size: 12px; color: var(--muted); letter-spacing: .04em; }
-  .meta i { font-style: normal; color: var(--line); margin: 0 8px; }
-  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
-  footer a { color: var(--ink-2); }
-  @media (max-width: 560px) {
+  .meta i { font-style: normal; color: var(--line-strong); margin: 0 9px; }
+  .more-line {
+    margin-top: 26px; font-size: 13px; color: var(--muted);
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .more-line a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+
+  /* ---------- 方法清单 ---------- */
+  ol.methods { list-style: none; counter-reset: m; padding: 0; margin: 0; }
+  ol.methods li {
+    counter-increment: m; position: relative; padding: 0 0 22px 46px;
+    border-left: 1px solid var(--line); margin-left: 12px;
+  }
+  ol.methods li:last-child { border-left-color: transparent; padding-bottom: 0; }
+  ol.methods li::before {
+    content: counter(m, decimal-leading-zero);
+    position: absolute; left: -13px; top: -2px;
+    width: 26px; height: 26px; background: var(--paper); border: 1px solid var(--line-strong);
+    border-radius: 50%; display: grid; place-items: center;
+    font-family: var(--mono); font-size: 10px; color: var(--muted);
+  }
+  ol.methods h4 { font-family: var(--serif); font-size: 16px; margin: 0 0 6px; font-weight: 600; }
+  ol.methods p { font-size: 14px; color: var(--ink-2); margin: 0; }
+
+  /* ---------- 引文 ---------- */
+  blockquote {
+    margin: 44px 0 0; padding: 30px 34px; background: var(--paper-2);
+    border-left: 3px solid var(--accent);
+  }
+  blockquote p {
+    font-family: var(--serif); font-size: 19px; line-height: 1.9; margin: 0; color: var(--ink);
+  }
+  blockquote cite {
+    display: block; margin-top: 14px; font-size: 12px; font-style: normal;
+    letter-spacing: .1em; color: var(--muted);
+  }
+
+  /* ---------- 问答 ---------- */
+  details {
+    border-bottom: 1px solid var(--line); padding: 18px 0;
+  }
+  details:first-of-type { border-top: 1px solid var(--line); }
+  summary {
+    cursor: pointer; font-family: var(--serif); font-size: 16.5px; font-weight: 600;
+    list-style: none; display: flex; align-items: center; gap: 12px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: "+"; font-family: var(--mono); font-size: 14px; color: var(--accent);
+    width: 16px; display: inline-block;
+  }
+  details[open] summary::before { content: "−"; }
+  details p { margin: 12px 0 0 28px; font-size: 14.5px; color: var(--ink-2); }
+
+  /* ---------- 页脚 ---------- */
+  footer {
+    margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--line);
+    font-size: 12.5px; color: var(--muted); line-height: 1.9;
+  }
+  .foot-grid { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .foot-brand { font-family: var(--serif); letter-spacing: .2em; font-size: 13px; color: var(--ink); }
+
+  @media (max-width: 720px) {
+    .principles, .cols { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
     .wrap { padding: 0 20px 72px; }
-    .hero { padding: 44px 0 34px; }
-    h1 { font-size: 28px; }
+    .hero { padding: 46px 0 36px; }
+    h1 { font-size: 30px; }
+    .lede { font-size: 17px; }
+    nav.top-links { display: none; }
+    blockquote { padding: 24px 22px; }
+    blockquote p { font-size: 17px; }
   }
 </style>
 </head>
@@ -84,45 +224,208 @@
 
   <header class="top">
     <a class="brand" href="./">拾页<span>SHIYE</span></a>
+    <nav class="top-links">
+      <a href="#about">关于</a>
+      <a href="#columns">栏目</a>
+      <a href="#articles">文章</a>
+      <a href="#method">方法</a>
+      <a href="#faq">问答</a>
+    </nav>
   </header>
 
-  <section class="hero">
+  <!-- 首屏 -->
+  <section class="hero" style="padding-top:72px">
     <div class="kicker">Read slowly · Write clearly</div>
     <h1>把想法留下来，<br />而不是<em>划过</em>。</h1>
     <p class="lede">
       拾页是一个可以慢慢写字的地方。没有推荐算法，没有三十秒读完的摘要，
-      只有作者认真写完的一页。这些文章按写下的顺序放在这里，不追热点，也不催更。
+      只有作者认真写完的一页。
+    </p>
+    <p class="lede-2">
+      你在这里看到的每一篇，都至少被重读过三遍：写一遍，放一夜，第二天再改一遍。
     </p>
     <div class="cta">
       <a class="btn" href="https://shiyeblog.app.workbuddy.host/?sharecode=HPOWC74VSU">进入拾页阅读</a>
-      <a class="btn ghost" href="https://github.com/jasperian0122-ux/shiye">查看源码</a>
+      <a class="btn ghost" href="#articles">先看目录</a>
     </div>
-    <p class="note" style="margin-top:18px">阅读与写作在正式站进行；本页是它的公开目录。</p>
   </section>
 
-  <h2 class="sec">已发布</h2>
+  <!-- 数据条 -->
+  <div class="stats">
+    <div class="stat"><b>03</b><span>已发布</span></div>
+    <div class="stat"><b>03</b><span>栏目</span></div>
+    <div class="stat"><b>0</b><span>推荐算法</span></div>
+    <div class="stat"><b>∞</b><span>重读次数</span></div>
+  </div>
 
-  <a class="item" href="https://shiyeblog.app.workbuddy.host/post.html?id=3&sharecode=HPOWC74VSU">
-    <h3>纸的质感</h3>
-    <p>手写一分钟只有二十几个字，但这个差距不是缺点，而是过滤器。想的时候用纸，存的时候用电脑。</p>
-    <div class="meta">拾页编辑部<i>·</i>笔记 · 工具<i>·</i>约 2 分钟</div>
-  </a>
+  <!-- 关于 -->
+  <section id="about">
+    <div class="sec-head"><span class="num">01</span><h2>关于拾页</h2></div>
+    <div class="body-text">
+      <p>
+        「拾页」这个名字来自一个很具体的动作：从一本书里，把某一页留下来。
+        不是收藏整本，不是做摘要，而是记住那一页——那一页上有让你停下来的句子。
+      </p>
+      <p>
+        我们这一代人并不是不读书，也不是不会写，而是读得太快、写得太少。信息流把每一段文字
+        都切成三十秒的长度，于是我们也习惯了用三十秒对待一本书、一个想法、一次对话。
+        拾页想做的，只是把速度调回去一点。
+      </p>
+      <p>
+        这里没有「热门」「推荐」「为你精选」。文章按写下的顺序排，谁先写谁在上面。
+        你读到的东西不是算法算出来的，是有人真的想清楚了才写下来的。
+      </p>
+    </div>
+  </section>
 
-  <a class="item" href="https://shiyeblog.app.workbuddy.host/post.html?id=2&sharecode=HPOWC74VSU">
-    <h3>一间只属于自己的房间</h3>
-    <p>灵感只在身体已经就位的时候才肯出现。与其等它，不如先把椅子拉开。</p>
-    <div class="meta">拾页编辑部<i>·</i>写作 · 生活<i>·</i>约 2 分钟</div>
-  </a>
+  <!-- 三点原则 -->
+  <section id="principles">
+    <div class="sec-head"><span class="num">02</span><h2>三条编辑原则</h2><span class="aside">写给自己看，也写给读者看</span></div>
+    <div class="principles">
+      <div class="principle">
+        <h3>宁可少，不可快</h3>
+        <p>一篇写完就发，是对读者的不负责。发之前至少放一夜，第二天读一遍，删掉三分之一的形容词。</p>
+      </div>
+      <div class="principle">
+        <h3>不做摘要</h3>
+        <p>摘要会让人误以为读过了。要么给全文，要么不给。三十秒能读完的东西，通常不值得占一个链接。</p>
+      </div>
+      <div class="principle">
+        <h3>允许不完美</h3>
+        <p>观点可以后来被推翻。文章底部不会偷偷改口，改了就写「已更新」，把改之前的想法也留着。</p>
+      </div>
+    </div>
+  </section>
 
-  <a class="item" href="https://shiyeblog.app.workbuddy.host/post.html?id=1&sharecode=HPOWC74VSU">
-    <h3>把阅读放慢一点</h3>
-    <p>信息流把每一段文字都切成三十秒，我们也习惯了用三十秒对待一本书。慢读不是姿态，而是技术。</p>
-    <div class="meta">拾页编辑部<i>·</i>阅读 · 方法<i>·</i>约 3 分钟</div>
-  </a>
+  <!-- 栏目 -->
+  <section id="columns">
+    <div class="sec-head"><span class="num">03</span><h2>三个栏目</h2><span class="aside">阅读 · 写作 · 笔记</span></div>
+    <div class="cols">
+      <div class="col">
+        <div class="tag">READING</div>
+        <h3>阅读</h3>
+        <p>关于怎么读、读什么、为什么读不下去。偏方法，少书单。一篇只讲一件事。</p>
+      </div>
+      <div class="col">
+        <div class="tag">WRITING</div>
+        <h3>写作</h3>
+        <p>写字这件事的体力部分：桌子、时间、噪音、改稿。灵感被谈得太多，场地被谈得太少。</p>
+      </div>
+      <div class="col">
+        <div class="tag">NOTES</div>
+        <h3>笔记</h3>
+        <p>纸与笔，或者键盘与检索。工具不决定思考的质量，但它会偷偷修改思考的速度。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 文章 -->
+  <section id="articles">
+    <div class="sec-head"><span class="num">04</span><h2>已发布</h2><span class="aside">按时间倒序</span></div>
+
+    <a class="item" href="https://shiyeblog.app.workbuddy.host/post.html?id=3&sharecode=HPOWC74VSU">
+      <div class="row"><span class="idx">03</span></div>
+      <h3>纸的质感</h3>
+      <p>手写一分钟只有二十几个字，但这个差距不是缺点，而是过滤器。想的时候用纸，存的时候用电脑。</p>
+      <div class="meta">拾页编辑部<i>·</i>笔记 · 工具<i>·</i>约 2 分钟</div>
+    </a>
+
+    <a class="item" href="https://shiyeblog.app.workbuddy.host/post.html?id=2&sharecode=HPOWC74VSU">
+      <div class="row"><span class="idx">02</span></div>
+      <h3>一间只属于自己的房间</h3>
+      <p>灵感只在身体已经就位的时候才肯出现。与其等它，不如先把椅子拉开。</p>
+      <div class="meta">拾页编辑部<i>·</i>写作 · 生活<i>·</i>约 2 分钟</div>
+    </a>
+
+    <a class="item" href="https://shiyeblog.app.workbuddy.host/post.html?id=1&sharecode=HPOWC74VSU">
+      <div class="row"><span class="idx">01</span></div>
+      <h3>把阅读放慢一点</h3>
+      <p>信息流把每一段文字都切成三十秒，我们也习惯了用三十秒对待一本书。慢读不是姿态，而是技术。</p>
+      <div class="meta">拾页编辑部<i>·</i>阅读 · 方法<i>·</i>约 3 分钟</div>
+    </a>
+
+    <div class="more-line">
+      新文章直接发在正式站，这里同步目录 ——
+      <a href="https://shiyeblog.app.workbuddy.host/?sharecode=HPOWC74VSU">去正式站看全部</a>
+    </div>
+  </section>
+
+  <!-- 方法 -->
+  <section id="method">
+    <div class="sec-head"><span class="num">05</span><h2>慢读的五条具体做法</h2><span class="aside">不是姿态，是技术</span></div>
+    <ol class="methods">
+      <li>
+        <h4>读到好句子时，停下来</h4>
+        <p>不要顺手往下翻。合上书，等三十秒。这三十秒里冒出来的东西，往往比后面十页更有用。</p>
+      </li>
+      <li>
+        <h4>抄一遍，不看原文</h4>
+        <p>抄写是唯一能强制大脑放慢的物理手段。键盘太快，快到手比脑子先到。</p>
+      </li>
+      <li>
+        <h4>写一句「为什么是这句」</h4>
+        <p>不需要写成文章，一句话就够。说不出为什么，说明它只是听起来漂亮。</p>
+      </li>
+      <li>
+        <h4>找一个它能替换掉的旧想法</h4>
+        <p>新观点如果不挤掉旧观点，就只是多了一条信息，不是一次改变。</p>
+      </li>
+      <li>
+        <h4>一周后重读自己的批注</h4>
+        <p>还认同的划掉，不再认同的留下来。变得最快的那几条，通常最值钱。</p>
+      </li>
+    </ol>
+    <blockquote>
+      <p>读书的价值不在于读了多少本，而在于有多少句子真正进入了你的语言。</p>
+      <cite>—— 拾页 · 编辑手记 第 01 期</cite>
+    </blockquote>
+  </section>
+
+  <!-- 问答 -->
+  <section id="faq">
+    <div class="sec-head"><span class="num">06</span><h2>常见问题</h2></div>
+
+    <details>
+      <summary>为什么这里看不到阅读量和评论区？</summary>
+      <p>因为没有。页面只记录「谁点了赞」和「谁收藏了」，不统计浏览量，也不做评论。
+         写作的人不需要每天盯着一个数字判断自己写得好不好。</p>
+    </details>
+
+    <details>
+      <summary>可以投稿吗？</summary>
+      <p>目前只有编辑部在写。以后如果开放，会在首页明说，不做暗箱。</p>
+    </details>
+
+    <details>
+      <summary>为什么有的文章这么短？</summary>
+      <p>短是结论，不是偷懒。想清楚的东西通常不长；写不短的，往往是还没想清楚。</p>
+    </details>
+
+    <details>
+      <summary>多久更新一次？</summary>
+      <p>不定期。有空、有话想说、而且改到自己满意了才发。追更的人大概会失望，但重读的人不会。</p>
+    </details>
+
+    <details>
+      <summary>这个页面和正式站有什么区别？</summary>
+      <p>本页是公开目录，任何人都能打开，也允许搜索引擎收录。写作、登录、点赞、收藏在
+         <a href="https://shiyeblog.app.workbuddy.host/?sharecode=HPOWC74VSU">正式站</a>进行。</p>
+    </details>
+  </section>
 
   <footer>
-    拾页 · 慢读慢写。<a href="https://github.com/jasperian0122-ux/shiye">源码托管在 GitHub</a>，
-    欢迎来读，也欢迎自己搭一个。
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">拾页 · SHIYE</div>
+        <div>慢读慢写。没有推荐算法，只有认真写完的一页。</div>
+      </div>
+      <div>
+        <a href="https://shiyeblog.app.workbuddy.host/?sharecode=HPOWC74VSU">正式站</a> ·
+        <a href="https://github.com/jasperian0122-ux/shiye">GitHub 源码</a> ·
+        <a href="./sitemap.xml">站点地图</a>
+        <div style="margin-top:6px">© 2026 拾页编辑部</div>
+      </div>
+    </div>
   </footer>
 
 </div>
@@ -131,10 +434,35 @@
   "@context": "https://schema.org",
   "@type": "Blog",
   "name": "拾页",
-  "description": "一个慢读慢写的博客站。没有推荐算法，只有认真写完的一页。",
+  "alternateName": "SHIYE",
+  "description": "一个慢读慢写的博客站。没有推荐算法，没有三十秒读完的摘要，只有认真写完的一页。",
   "url": "https://jasperian0122-ux.github.io/shiye/",
   "inLanguage": "zh-CN",
-  "author": { "@type": "Organization", "name": "拾页编辑部" }
+  "author": { "@type": "Organization", "name": "拾页编辑部" },
+  "publisher": { "@type": "Organization", "name": "拾页编辑部" },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "纸的质感",
+      "description": "手写一分钟只有二十几个字，但这个差距不是缺点，而是过滤器。",
+      "url": "https://shiyeblog.app.workbuddy.host/post.html?id=3",
+      "author": { "@type": "Organization", "name": "拾页编辑部" }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "一间只属于自己的房间",
+      "description": "灵感只在身体已经就位的时候才肯出现。",
+      "url": "https://shiyeblog.app.workbuddy.host/post.html?id=2",
+      "author": { "@type": "Organization", "name": "拾页编辑部" }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "把阅读放慢一点",
+      "description": "慢读不是一种姿态，而是一种技术。",
+      "url": "https://shiyeblog.app.workbuddy.host/post.html?id=1",
+      "author": { "@type": "Organization", "name": "拾页编辑部" }
+    }
+  ]
 }
 </script>
 </body>
