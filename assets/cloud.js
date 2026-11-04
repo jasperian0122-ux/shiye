@@ -353,8 +353,17 @@
     if (footMount) {
       footMount.innerHTML =
         '<footer class="footer wrap">' +
-          '<div class="f-brand">拾页 · 慢读与慢写</div>' +
-          '<div>一个安静的写作与阅读角落 · 内容由作者本人发布</div>' +
+          '<div class="f-main">' +
+            '<div class="f-brand">拾页 · 慢读与慢写</div>' +
+            '<div>一个安静的写作与阅读角落 · 内容由作者本人发布</div>' +
+          '</div>' +
+          '<div class="f-links">' +
+            '<a href="index.html#about">关于</a>' +
+            '<a href="index.html#principles">原则</a>' +
+            '<a href="index.html#method">慢读方法</a>' +
+            '<a href="index.html#faq">问答</a>' +
+            '<a href="https://jasperian0122-ux.github.io/shiye/" target="_blank" rel="noopener">公开页</a>' +
+          '</div>' +
         '</footer>';
     }
   }

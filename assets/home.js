@@ -73,6 +73,17 @@
     listEl.innerHTML = items.map(function (p, i) { return SY.renderPostRow(p, i + 1); }).join('');
   }
 
+  function renderStats() {
+    var postEl = document.getElementById('stat-posts');
+    var tagEl = document.getElementById('stat-tags');
+    var tags = {};
+    state.posts.forEach(function (p) {
+      (p.tags || []).forEach(function (t) { tags[t] = 1; });
+    });
+    if (postEl) postEl.textContent = String(state.posts.length).padStart(2, '0');
+    if (tagEl) tagEl.textContent = String(Object.keys(tags).length).padStart(2, '0');
+  }
+
   filtersEl.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-tag]');
     if (!btn) return;
@@ -102,6 +113,7 @@
       renderFeature(state.posts[0]);
       renderTags();
       renderList();
+      renderStats();
     } catch (err) {
       featureSlot.innerHTML = '';
       listEl.innerHTML = '<div class="empty"><h3>文章没能加载出来</h3><p>' + SY.esc(err.message || '请稍后重试') + '</p></div>';
